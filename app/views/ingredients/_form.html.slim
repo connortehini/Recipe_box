@@ -1,0 +1,7 @@
+= form_with model: ingredient do |form|
+  div 
+      = form.label :name
+  div  
+      = form.text_field :name, :required => true
+  div 
+      =form.submit

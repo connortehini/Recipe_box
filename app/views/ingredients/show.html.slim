@@ -1,0 +1,17 @@
+h1 Ingredient  
+
+
+h4 
+  = @ingredient.name
+
+ol 
+  - @recipes.each do |recipe|
+    li
+      = link_to recipe.title, recipe_path(recipe)
+
+li 
+  = link_to "Edit Ingredient", edit_ingredient_path 
+li 
+  = link_to "Delete Ingredient", ingredient_path ,  method: :delete, data: {confirm: "Are you sure?"}
+li 
+  = link_to "Return home", root_path

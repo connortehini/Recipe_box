@@ -1,0 +1,7 @@
+= form_with model: tag do |form|
+  div 
+      = form.label :section   
+  div 
+      = form.text_field :section, :required => true
+  div
+      =form.submit

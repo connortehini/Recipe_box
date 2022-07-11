@@ -1,0 +1,9 @@
+h1 Tags
+
+ul 
+  - @tags.each do |tag|
+      li 
+        = link_to tag.section, tag 
+
+li 
+  = link_to "Return Home", root_path

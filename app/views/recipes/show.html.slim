@@ -1,0 +1,55 @@
+h1
+  = @recipe.title
+
+h1 Description 
+p   
+  = @recipe.description
+
+h1 Instructions 
+p 
+  = @recipe.instructions
+
+h1 Ingredients
+
+ol
+  - @recipe.ingredients.each do |ingredient|
+    li  
+    
+      = ingredient.name 
+
+h1 Tags
+
+ul 
+  -@recipe.tags.each do |tag|
+    li 
+      =tag.section
+
+h1 Ratings 
+
+- @recipe.rankings.each do |ranking|
+  div 
+    = ranking.rating
+  div
+    =link_to 'Delete Rating', [ranking.recipe, ranking], method: :delete, data: {confirm: 'Are you sure?'} 
+
+h1 Add Rating 
+
+= form_with model: [@recipe, @recipe.rankings.build] do |form|
+  div  
+    = form.label :rating
+    = form.select :rating, ['1','2','3','4','5'] 
+  div 
+    = form.submit 
+
+h1 Average Rating 
+
+= @rating
+ 
+li  
+  = link_to "Edit Recipe", edit_recipe_path(@recipe)
+
+li 
+  = link_to "Delete Recipe", recipe_path(@recipe), method: :delete, data: {confirm: "Are you sure?"}
+  
+li 
+  = link_to "Return Home", root_path

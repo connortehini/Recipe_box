@@ -1,0 +1,31 @@
+= form_with model: recipe, html: {multipart: true} do |form|
+
+  div 
+      = form.label :title
+  div  
+      = form.text_field :title, :required => true
+  div 
+      = form.label :description
+  div 
+      = form.text_field :description, :required => true
+  div 
+      = form.label :instructions
+  div 
+      = form.text_area :instructions, :required => true 
+  div 
+      = form.label :ingredients
+  div 
+    -@ingredients.each do |ingredient| 
+        = form.check_box :ingredients, {multiple: true}, ingredient, nil 
+        = form.label :ingredients, ingredient 
+        br 
+  div 
+      = form.label :tags
+  div 
+    -@tags.each do |tag| 
+        = form.check_box :tags, {multiple: true}, tag, nil 
+        = form.label :tags, tag  
+        br 
+  div 
+      = form.submit 
+

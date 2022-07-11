@@ -1,0 +1,17 @@
+h1 Tag 
+
+= @tag.section
+
+ol 
+  - @recipes.each do |recipe|
+    li
+      = link_to recipe.title  , recipe_path(recipe)
+
+li 
+  = link_to "Edit Tag", edit_tag_path(@tag)
+
+li 
+  = link_to "Delete Tag", tag_path, method: :delete, data: {confirm: "Are you sure?"}
+
+li 
+  = link_to "Return Home", root_path 

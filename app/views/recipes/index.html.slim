@@ -1,0 +1,27 @@
+h1 Recipes 
+
+h3 Search for a specific recipie by ingredient 
+
+=form_with method: :get do |form|
+  div
+    = form.label :search
+  div
+    = form.select :ingredient, Ingredient.pluck(:name, :id), {:include_blank => 'Please select an ingredient'}
+  div 
+    = form.submit  
+
+ul 
+  - @recipes.each do |recipe|
+      li = link_to recipe.title, recipe
+      li = recipe.rankings.average(:rating)
+    
+li 
+  = link_to "Add new recipe", new_recipe_path
+li
+  = link_to "Add new ingredient", new_ingredient_path
+li
+  = link_to "See all ingredients", ingredients_path
+li 
+  = link_to "Add new tag", new_tag_path 
+li 
+  = link_to "See all tags", tags_path 
